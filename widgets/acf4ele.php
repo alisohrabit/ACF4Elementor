@@ -105,9 +105,9 @@ class acf4ele extends Widget_Base {
 		);
 
 		$this->add_control(
-			'title',
+			'groupid',
 			[
-				'label' => __( 'Title', 'elementor-acf4ele' ),
+				'label' => __( 'ACF Group ID', 'elementor-acf4ele' ),
 				'type' => Controls_Manager::TEXT,
 			]
 		);
@@ -123,19 +123,19 @@ class acf4ele extends Widget_Base {
 		);
 
 		$this->add_control(
-			'text_transform',
+			'style',
 			[
-				'label' => __( 'Text Transform', 'elementor-acf4ele' ),
+				'label' => __( 'Style', 'elementor-acf4ele' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
 					'' => __( 'None', 'elementor-acf4ele' ),
-					'uppercase' => __( 'UPPERCASE', 'elementor-acf4ele' ),
-					'lowercase' => __( 'lowercase', 'elementor-acf4ele' ),
-					'capitalize' => __( 'Capitalize', 'elementor-acf4ele' ),
+					'dark' => __( 'dark', 'elementor-acf4ele' ),
+					'silver' => __( 'silver', 'elementor-acf4ele' ),
+					'light' => __( 'light', 'elementor-acf4ele' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
+					'{{WRAPPER}} .title' => 'style: {{VALUE}};',
 				],
 			]
 		);
@@ -153,11 +153,20 @@ class acf4ele extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings_for_display();
-
 		echo '<div class="title">';
-		echo $settings['title'];
-		echo '</div>';
+		echo  '<table>';
+		
+		$settings = $this->get_settings_for_display();
+        $fields = acf_get_fields($settings['groupid']);
+		foreach( $fields as $field ){
+			  echo  '<tr class="price"><td>';
+		      echo $field['label']; 	
+		      echo '</td>';
+		      echo "<td>";
+              echo get_field($field['name'],$post_id); 
+              echo "</td></tr>";
+		}
+		echo '</table></div>';
 	}
 
 	/**
@@ -172,7 +181,7 @@ class acf4ele extends Widget_Base {
 	protected function _content_template() {
 		?>
 		<div class="title">
-			{{{ settings.title }}}
+			{{{ settings.groupid }}}
 		</div>
 		<?php
 	}
