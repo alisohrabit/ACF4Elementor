@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Elementor Hello World
- * Description: Elementor sample plugin.
- * Plugin URI:  https://elementor.com/
- * Version:     1.2.0
- * Author:      Author Name
- * Author URI:  https://elementor.com/
- * Text Domain: elementor-hello-world
+ * Plugin Name: Elementor ACF Widget
+ * Description: Elementor Widget to show a group of advanced custom fields
+ * Plugin URI:  https://avengering.com/
+ * Version:     1.3.0
+ * Author:      Ali Sohrabi
+ * Author URI:  https://avengering.com/
+ * Text Domain: elementor-advanced-custom-fields
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,11 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Main Elementor Hello World Class
  *
- * The init class that runs the Hello World plugin.
+ * The init class that runs the acf4ele plugin.
  * Intended To make sure that the plugin's minimum requirements are met.
  *
- * You should only modify the constants to match your plugin's needs.
- *
+  *
  * Any custom code should go inside Plugin Class in the plugin.php file.
  * @since 1.2.0
  */
@@ -27,10 +26,8 @@ final class Elementor_acf4ele {
 	/**
 	 * Plugin Version
 	 *
-	 * @since 1.2.0
-	 * @var string The plugin version.
 	 */
-	const VERSION = '1.2.0';
+	const VERSION = '1.3.0';
 
 	/**
 	 * Minimum Elementor Version
@@ -128,7 +125,7 @@ final class Elementor_acf4ele {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
 			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'elementor-acf4ele' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-acf4ele' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor ACF Widget', 'elementor-acf4ele' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'elementor-acf4ele' ) . '</strong>'
 		);
 
@@ -151,7 +148,7 @@ final class Elementor_acf4ele {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-acf4ele' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-acf4ele' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor ACF Widget', 'elementor-acf4ele' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'elementor-acf4ele' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);
@@ -175,7 +172,7 @@ final class Elementor_acf4ele {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-acf4ele' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-acf4ele' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor ACF Widget', 'elementor-acf4ele' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'elementor-acf4ele' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
