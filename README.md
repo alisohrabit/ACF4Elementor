@@ -28,4 +28,4 @@ plugin.php
 * `elementor-acf4ele.php`	- Main plugin file, used as a loader if plugin minimum requirements are met.
 * `plugin.php` - The actual Plugin file/Class.
 
-For more documentation please see [Developers Website](https://avengering.com/en/blog/).
+For more documentation please see [Developers Website](https://avengering.com/en/how-to-create-an-elementor-widget-for-advanced-custom-fields/).
