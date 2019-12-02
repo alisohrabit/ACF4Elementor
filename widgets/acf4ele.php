@@ -163,7 +163,7 @@ class acf4ele extends Widget_Base {
 		      echo $field['label']; 	
 		      echo '</td>';
 		      echo "<td>";
-              echo get_field($field['name'],$post_id); 
+              echo get_field($field['name'],get_the_id()); 
               echo "</td></tr>";
 		}
 		echo '</table></div>';
