@@ -97,6 +97,15 @@ class acf4ele extends Widget_Base {
 	 * @access protected
 	 */
 	protected function _register_controls() {
+		
+		    $groupsarray = array();
+	$fieldGroups=acf_get_field_groups();       
+    for ($i = 0; $i < count($fieldGroups); $i++) { 
+        
+        $groupsarray[$fieldGroups[$i]['key']] = __($fieldGroups[$i]['title'],'elementor-acf4ele' );
+	}
+
+		
 		$this->start_controls_section(
 			'section_content',
 			[
@@ -108,7 +117,11 @@ class acf4ele extends Widget_Base {
 			'groupid',
 			[
 				'label' => __( 'ACF Group ID', 'elementor-acf4ele' ),
-				'type' => Controls_Manager::TEXT,
+				'type' => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => $groupsarray,
+				'selectors' => ['{{WRAPPER}} .title' => 'groupid: {{VALUE}};',],
+
 			]
 		);
 
@@ -134,15 +147,17 @@ class acf4ele extends Widget_Base {
 					'silver' => __( 'silver', 'elementor-acf4ele' ),
 					'light' => __( 'light', 'elementor-acf4ele' ),
 				],
-				'selectors' => [
-					'{{WRAPPER}} .title' => 'style: {{VALUE}};',
-				],
+				'selectors' => ['{{WRAPPER}} .title' => 'style: {{VALUE}};',],
 			]
 		);
 
 		$this->end_controls_section();
 	}
 
+
+	/***  **/
+	
+	
 	/**
 	 * Render the widget output on the frontend.
 	 *
@@ -161,13 +176,23 @@ class acf4ele extends Widget_Base {
 		foreach( $fields as $field ){
 			  echo  '<tr class="price"><td>';
 		      echo $field['label']; 	
-		      echo '</td>';
+		      echo "</td>";
 		      echo "<td>";
-              echo get_field($field['name'],get_the_id()); 
+			
+			 if ($field['type']=='range'){
+         echo "<progress max='5' value='".get_field($field['name'],get_the_id())."'></progress><div style='margin-left: 50px;margin-top: -35px;position: absolute;color: white;'>".get_field($field['name'],get_the_id())." / 5</div>";
+				 
+		 } 
+		 else 
+		 {
+			 echo get_field($field['name'],get_the_id()); 
+		 }		  			 
               echo "</td></tr>";
 		}
 		echo '</table></div>';
 	}
+	
+
 
 	/**
 	 * Render the widget output in the editor.
