@@ -59,7 +59,6 @@ class Plugin {
 	 */
 	private function include_widgets_files() {
 		require_once( __DIR__ . '/widgets/acf4ele.php' );
-		require_once( __DIR__ . '/widgets/inline-editing.php' );
 	}
 
 	/**
@@ -76,7 +75,6 @@ class Plugin {
 
 		// Register Widgets
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\acf4ele() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Inline_Editing() );
 	}
 
 	/**
